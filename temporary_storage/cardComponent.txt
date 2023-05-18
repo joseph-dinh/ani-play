@@ -1,0 +1,196 @@
+import { BiChevronRight } from "react-icons/bi"
+import { AiFillStar, AiOutlineStar } from "react-icons/ai"
+
+const CardComponent = ( props ) => {
+    return (
+    <div className="flex flex-col space-y-3">
+          
+      <div className="flex flex-row justify-between items-center lg:items-end">
+        <div className="font-semibold text-2xl">{props.name}</div>
+        {/* <button className="font-semibold text-2xl rounded-full bg-neutral-800 lg:hidden">
+          <BiChevronRight className="h-8 w-8"/>
+        </button> */}
+        <button className="font-light text-[14px] rounded-full">
+          View All
+        </button>
+      </div>
+
+      <div id="horizontalScroll" className="grid grid-flow-col overflow-x-scroll gap-3 items-center justify-start">
+        
+        <div className="flex flex-col w-32 sm:w-40 md:w-48 space-y-2">
+          <div className="aspect-[9/14] bg-blue-100 relative bg-cover bg-[url(https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx145139-rRimpHGWLhym.png)]"/>
+          <div className="font-semibold">Demon Slayer Swordsmith Vi...</div>
+        </div> 
+
+        <div className="flex flex-col w-32 sm:w-40 md:w-48 space-y-2">
+          <div className="w-full h-full aspect-[9/14] bg-blue-100 bg-cover bg-[url(https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx21-tXMN3Y20PIL9.jpg)]">
+          </div>
+          <div className="font-semibold">Demon Slayer Swordsmith Vi...</div>
+        </div> 
+
+        <div className="flex flex-col w-32 sm:w-40 md:w-48 space-y-2">
+          <div className="w-full h-full aspect-[9/14] bg-blue-100 bg-cover bg-[url(https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx131518-RU7RoUmGb2sP.jpg)]"/>
+          <div className="font-semibold">Demon Slayer Swordsmith Vi...</div>
+        </div>
+
+        <div className="flex flex-col w-32 sm:w-40 md:w-48 space-y-2 relative group">
+          <div className="w-full h-full aspect-[9/14] bg-blue-100 bg-cover bg-[url(https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx131518-RU7RoUmGb2sP.jpg)] relative">
+            <div className="w-full aspect-[9/14] h-[20%] transition-all duration-500 group-hover:h-full bg-gradient-to-t from-black to-transparent group-hover:from-10% absolute bottom-0"/>
+            <div className="absolute bottom-0 left-0 hidden group-hover:flex transition-all duration-500 space-x-1 justify-between px-2 items-center"><AiFillStar className="w-5 h-5 text-yellow-400"/><h1>9.5</h1></div>
+            <div className="absolute bottom-0 right-0 hidden group-hover:flex transition-all duration-500 space-x-1 justify-between px-2 items-center"><h1>11/13</h1></div>
+          </div>
+          <div className="font-semibold">Demon Slayer Swordsmith Vi...</div>
+        </div>
+        
+
+      </div>
+
+    </div>
+  );
+};
+
+export default CardComponent;
+
+
+{/* <div className="flex flex-col w-32 sm:w-40 md:w-48 space-y-2">
+  <div className="aspect-[9/14] bg-blue-100 relative bg-cover bg-[url(https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx145139-rRimpHGWLhym.png)]">
+    <div className="absolute bottom-0 left-0 bg-black opacity-70 w-[50%] h-[15%]"/>
+    <div className="absolute bottom-0 left-0 flex w-[50%] h-[15%] justify-between px-2 items-center"><AiFillStar className="w-5 h-5 text-yellow-400"/><h1>9.5</h1></div>
+      <img className="w-full h-full object-cover" src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx145139-rRimpHGWLhym.png"/>
+  </div>
+  <div className="font-semibold">Demon Slayer Swordsmith Vi...</div>
+</div>  */}
+
+
+
+
+if (Hls.isSupported()) {
+  const video = videoRef.current;
+  const hls = new Hls();
+  hls.loadSource(src);
+  hls.attachMedia(video);
+
+  hls.on(Hls.Events.MANIFEST_PARSED, () => {
+    plyrRef.current = new Plyr(video, { controls: [
+      'play-large', // The large play button in the center
+      'restart', // Restart playback
+      'rewind', // Rewind by the seek time (default 10 seconds)
+      'play', // Play/pause playback
+      'fast-forward', // Fast forward by the seek time (default 10 seconds)
+      'progress', // The progress bar and scrubber for playback and buffering
+      'current-time', // The current time of playback
+      'duration', // The full duration of the media
+      'mute', // Toggle mute
+      'volume', // Volume control
+      'captions', // Toggle captions
+      'settings', // Settings menu
+      'pip', // Picture-in-picture (currently Safari only)
+      'airplay', // Airplay (currently Safari only)
+      // 'download', // Show a download button with a link to either the current source or a custom URL you specify in your options
+      'fullscreen', // Toggle fullscreen
+    ],
+    quality: {
+      default: 0,
+      options: ['auto', '1080p', '720p', '480p', '360p'],
+      force: true,
+      onChange: (value) => {
+        console.log(`Selected quality: ${value}`);
+      },
+    },
+    });
+  });
+} else {
+  videoRef.current.src = src;
+}
+}, [src]);
+
+
+
+
+
+
+"use client";
+import { useEffect, useRef } from 'react';
+import Hls from 'hls.js';
+import Plyr from 'plyr';
+import 'plyr/dist/plyr.css';
+
+const VideoPlayer = ({ src }) => {
+  const videoRef = useRef(null);
+  const plyrRef = useRef(null);
+  console.log(src)
+
+  useEffect(() => {
+    const defaultOptions = {};
+
+    if (Hls.isSupported()) {
+      const video = videoRef.current;
+      const hls = new Hls();
+      hls.loadSource(src);
+      // hls.attachMedia(video);
+
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        const qualityLevels = hls.levels.map((level, index) => ({
+          label: level.height,
+          src: level.url,
+          selected: index === hls.currentLevel,
+        }));
+
+        console.log(qualityLevels)
+        defaultOptions.controls = [
+          'play-large', // The large play button in the center
+          'restart', // Restart playback
+          'rewind', // Rewind by the seek time (default 10 seconds)
+          'play', // Play/pause playback
+          'fast-forward', // Fast forward by the seek time (default 10 seconds)
+          'progress', // The progress bar and scrubber for playback and buffering
+          'current-time', // The current time of playback
+          'duration', // The full duration of the media
+          'mute', // Toggle mute
+          'volume', // Volume control
+          'captions', // Toggle captions
+          'settings', // Settings menu
+          'pip', // Picture-in-picture (currently Safari only)
+          'airplay', // Airplay (currently Safari only)
+          // 'download', // Show a download button with a link to either the current source or a custom URL you specify in your options
+          'fullscreen', // Toggle fullscreen
+        ]
+
+        defaultOptions.quality = {
+          default: qualityLevels[3].label,
+          options: qualityLevels.map((level) => level.label),
+          forced: true,
+          onChange: (quality) => {
+            updateQuality(quality)
+          }
+        }
+
+        var player = new Plyr(video, defaultOptions);
+      });
+      hls.attachMedia(video)
+      window.hls = hls;
+    } else {
+      console.error('HLS is not supported by your browser')
+    }
+
+    function updateQuality(newQuality) {
+      console.log(window.hls)
+      if (newQuality === 0) {
+        window.hls.currentLevel = -1; //Enable AUTO quality if option.value = 0
+      } else {
+        window.hls.levels.forEach((level, levelIndex) => {
+          if (level.height === newQuality) {
+            console.log("Found quality match with " + newQuality);
+            window.hls.currentLevel = levelIndex;
+          }
+        });
+      }
+    }
+  }, [src]);
+
+  return (
+    <video ref={videoRef} controls />
+  );
+};
+
+export default VideoPlayer;
